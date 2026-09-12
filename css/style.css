@@ -1,0 +1,723 @@
+/* =========================================================
+   FONT
+========================================================= */
+
+@font-face {
+
+  font-family: "6B7TFont";
+
+  src:
+    url("../fonts/Minecraft.otf")
+    format("opentype");
+
+  font-weight: 100 900;
+
+  font-style: normal;
+
+  font-display: swap;
+
+}
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+
+  box-sizing: border-box;
+
+}
+
+
+html,
+body {
+
+  margin: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  overflow: hidden;
+
+  font-family:
+    "6B7TFont",
+    system-ui,
+    sans-serif;
+
+  color: #fff;
+
+  background: #000;
+
+}
+
+
+/* =========================================================
+   360 PANORAMA
+========================================================= */
+
+#panorama {
+
+  position: fixed;
+
+  top: 0;
+
+  left: 0;
+
+  width: 100vw;
+
+  height: 100vh;
+
+  z-index: 0;
+
+  background: #000;
+
+  overflow: hidden;
+
+}
+
+
+#panorama canvas {
+
+  display: block;
+
+  width: 100% !important;
+
+  height: 100% !important;
+
+}
+
+
+/* =========================================================
+   DARK OVERLAY
+========================================================= */
+
+#panorama::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      rgba(0, 0, 0, .30),
+      rgba(0, 0, 0, .58)
+    );
+
+  z-index: 1;
+
+}
+
+
+/* =========================================================
+   MAIN MENU
+========================================================= */
+
+.menu-screen {
+
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  min-height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  padding: 40px 16px;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.title-wrap {
+
+  position: relative;
+
+  margin-bottom: 44px;
+
+  text-align: center;
+
+  pointer-events: auto;
+
+}
+
+
+.title {
+
+  font-size:
+    clamp(
+      56px,
+      13vw,
+      110px
+    );
+
+  font-weight: 700;
+
+  letter-spacing: -3px;
+
+  color: #d8d8d8;
+
+  text-shadow:
+    4px 4px 0 #1a1a1a,
+    7px 7px 0 #000;
+
+  transform:
+    skewY(-1.5deg);
+
+  line-height: .85;
+
+  user-select: none;
+
+}
+
+
+.subtitle {
+
+  margin-top: 8px;
+
+  font-size:
+    clamp(
+      16px,
+      3.5vw,
+      24px
+    );
+
+  letter-spacing: 6px;
+
+  color: #eee;
+
+  text-shadow:
+    2px 2px 0 #1a1a1a;
+
+  user-select: none;
+
+}
+
+
+/* =========================================================
+   SPLASH
+========================================================= */
+
+.splash {
+
+  position: absolute;
+
+  top: 40px;
+
+  right: -30px;
+
+  color: #ffe94d;
+
+  font-size:
+    clamp(
+      13px,
+      2.2vw,
+      17px
+    );
+
+  transform:
+    rotate(-8deg);
+
+  text-shadow:
+    1px 1px 0 #6b5c00;
+
+  animation:
+    splashPulse
+    .5s
+    ease-in-out
+    infinite;
+
+}
+
+
+@keyframes splashPulse {
+
+  0%,
+  100% {
+
+    transform:
+      rotate(-8deg)
+      scale(1);
+
+  }
+
+
+  50% {
+
+    transform:
+      rotate(-8deg)
+      scale(1.08);
+
+  }
+
+}
+
+
+/* =========================================================
+   BUTTON CONTAINER
+========================================================= */
+
+.menu-buttons {
+
+  width:
+    min(
+      420px,
+      90vw
+    );
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  pointer-events: auto;
+
+}
+
+
+/* =========================================================
+   COMMON BUTTON BACKGROUND
+========================================================= */
+
+.mc-btn,
+.icon-btn {
+
+  background:
+
+    url("../images/button-texture.png")
+    center / cover no-repeat,
+
+    linear-gradient(
+      #7d7d7d,
+      #6a6a6a 48%,
+      #575757 50%,
+      #626262
+    );
+
+  image-rendering: pixelated;
+
+}
+
+
+/* =========================================================
+   NORMAL BUTTON
+========================================================= */
+
+.mc-btn {
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  min-height: 46px;
+
+  border:
+    2px solid #131313;
+
+  color: #fff;
+
+  text-decoration: none;
+
+  font-family: inherit;
+
+  font-size: 18px;
+
+  text-shadow:
+    2px 2px 0 #222;
+
+  box-shadow:
+
+    inset
+      0 1px 0
+      rgba(255,255,255,.25),
+
+    inset
+      0 -2px 0
+      rgba(0,0,0,.35),
+
+    2px 2px 0 #111;
+
+  cursor: pointer;
+
+  transition:
+    filter .08s,
+    transform .05s;
+
+}
+
+
+/* =========================================================
+   BUTTON HOVER
+========================================================= */
+
+.mc-btn:hover {
+
+  filter:
+    brightness(1.15);
+
+}
+
+
+/* =========================================================
+   BUTTON PRESS
+========================================================= */
+
+.mc-btn:active {
+
+  transform:
+    translate(
+      1px,
+      2px
+    );
+
+  box-shadow:
+
+    inset
+      0 2px 0
+      rgba(0,0,0,.35),
+
+    1px 1px 0 #111;
+
+}
+
+
+/* =========================================================
+   PRIMARY BUTTON
+========================================================= */
+
+.mc-btn.primary {
+
+  background:
+
+    url("../images/button-texture.png")
+    center / cover no-repeat,
+
+    linear-gradient(
+      #8a8a8a,
+      #767676 48%,
+      #626262 50%,
+      #6d6d6d
+    );
+
+}
+
+
+/* =========================================================
+   ICON BUTTONS
+========================================================= */
+
+.icon-row {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-top: 4px;
+
+}
+
+
+.icon-btn {
+
+  width: 44px;
+
+  height: 44px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 18px;
+
+  border:
+    2px solid #131313;
+
+  color: #fff;
+
+  text-decoration: none;
+
+  box-shadow:
+
+    inset
+      0 1px 0
+      rgba(255,255,255,.25),
+
+    inset
+      0 -2px 0
+      rgba(0,0,0,.35),
+
+    2px 2px 0 #111;
+
+}
+
+
+.icon-btn:hover {
+
+  filter:
+    brightness(1.15);
+
+}
+
+
+/* =========================================================
+   STATUS BAR
+========================================================= */
+
+.status-bar {
+
+  position: absolute;
+
+  left: 0;
+
+  right: 0;
+
+  bottom: 0;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  padding: 8px 14px;
+
+  font-size: 12px;
+
+  color: #ddd;
+
+  text-shadow:
+    1px 1px 0 #000;
+
+  background:
+    rgba(0,0,0,.3);
+
+  pointer-events: auto;
+
+}
+
+
+.status-bar .online::before {
+
+  content: "●";
+
+  color: #6fd36f;
+
+  margin-right: 5px;
+
+}
+
+
+.status-bar .offline::before {
+
+  content: "●";
+
+  color: #d36f6f;
+
+  margin-right: 5px;
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.overlay {
+
+  position: fixed;
+
+  inset: 0;
+
+  display: none;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background:
+    rgba(0,0,0,.6);
+
+  padding: 20px;
+
+  z-index: 10;
+
+}
+
+
+.overlay.open {
+
+  display: flex;
+
+}
+
+
+/* =========================================================
+   PANEL
+========================================================= */
+
+.mc-panel {
+
+  width:
+    min(
+      480px,
+      100%
+    );
+
+  max-height: 80vh;
+
+  overflow-y: auto;
+
+  padding: 22px;
+
+  background:
+
+    linear-gradient(
+      rgba(55,55,55,.97),
+      rgba(39,39,39,.97)
+    );
+
+  border:
+    3px solid #111;
+
+  box-shadow:
+
+    inset
+      2px 2px
+      rgba(255,255,255,.13),
+
+    inset
+      -2px -2px
+      rgba(0,0,0,.4),
+
+    4px 4px #090909;
+
+}
+
+
+.mc-panel h2 {
+
+  margin:
+    0 0 18px;
+
+  text-align: center;
+
+  font-size: 26px;
+
+  text-shadow:
+    2px 2px 0 #111;
+
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.mc-panel .close-btn {
+
+  display: block;
+
+  margin:
+    18px auto 0;
+
+  width: 140px;
+
+}
+
+
+/* =========================================================
+   IP
+========================================================= */
+
+.ip-line {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+
+}
+
+
+.ip-line span {
+
+  font-size: 22px;
+
+  background: #333;
+
+  border:
+    2px solid #111;
+
+  padding: 8px 14px;
+
+}
+
+
+/* =========================================================
+   RULES
+========================================================= */
+
+.rule {
+
+  display: flex;
+
+  gap: 12px;
+
+  padding: 9px 0;
+
+  border-bottom:
+    1px solid #444;
+
+  font-size: 14px;
+
+}
+
+
+.rule:last-child {
+
+  border-bottom: none;
+
+}
+
+
+.rule-num {
+
+  color: #999;
+
+  min-width: 22px;
+
+}
