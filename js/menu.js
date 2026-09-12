@@ -136,7 +136,8 @@ const splashTexts = [
   "six seven!",
   "中繼器接紅石粉...放一個tnt在這...Boom!",
   "六七",
-  "陸柒"
+  "陸柒",
+  "他能工作就不要動他，這句話在紅石上是一樣的"
 ];
 
 function randomSplash() {
