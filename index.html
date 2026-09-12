@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6b7t | Minecraft Server</title>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600;700&display=swap");
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    height: 100%;
+    font-family: "Pixelify Sans", system-ui, sans-serif;
+    color: #fff;
+  }
+
+  /* ---- 主選單畫面 ---- */
+
+  .menu-screen {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background:
+      linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.55)),
+      url("background.jpg") center / cover no-repeat,
+      #2a2a24; /* 沒放圖片時的深色底色 */
+    padding: 40px 16px;
+    overflow: hidden;
+  }
+
+  .title-wrap {
+    position: relative;
+    margin-bottom: 44px;
+    text-align: center;
+  }
+
+  .title {
+    font-size: clamp(56px, 13vw, 110px);
+    font-weight: 700;
+    letter-spacing: -3px;
+    color: #d8d8d8;
+    text-shadow:
+      4px 4px 0 #1a1a1a,
+      7px 7px 0 #000;
+    transform: skewY(-1.5deg);
+    line-height: .85;
+  }
+
+  .subtitle {
+    margin-top: 6px;
+    font-size: clamp(16px, 3.5vw, 24px);
+    letter-spacing: 6px;
+    color: #eee;
+    text-shadow: 2px 2px 0 #1a1a1a;
+  }
+
+  .splash {
+    position: absolute;
+    top: -6px;
+    right: -30px;
+    color: #ffe94d;
+    font-size: clamp(13px, 2.2vw, 17px);
+    transform: rotate(-8deg);
+    text-shadow: 1px 1px 0 #6b5c00;
+    animation: pulse 1.4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: rotate(-8deg) scale(1); }
+    50% { transform: rotate(-8deg) scale(1.08); }
+  }
+
+  .menu-buttons {
+    width: min(420px, 90vw);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /*
+    自訂按鈕材質：
+    把你的材質圖片存成 button-texture.png，跟 index.html 放同一個資料夾即可套用。
+    圖片會蓋在下面的灰色漸層之上；如果沒有這個檔案，瀏覽器會自動顯示灰色漸層當備用樣式。
+  */
+  .mc-btn,
+  .icon-btn {
+    background:
+      url("button-texture.png") center / cover no-repeat,
+      linear-gradient(#7d7d7d, #6a6a6a 48%, #575757 50%, #626262);
+    image-rendering: pixelated;
+  }
+
+  .mc-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 46px;
+    border: 2px solid #131313;
+    color: #fff;
+    text-decoration: none;
+    font: inherit;
+    font-size: 18px;
+    text-shadow: 2px 2px 0 #222;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.25),
+      inset 0 -2px 0 rgba(0,0,0,.35),
+      2px 2px 0 #111;
+    cursor: pointer;
+  }
+
+  .mc-btn:hover { filter: brightness(1.15); }
+  .mc-btn:active {
+    transform: translate(1px, 2px);
+    box-shadow: inset 0 2px 0 rgba(0,0,0,.35), 1px 1px 0 #111;
+  }
+
+  .mc-btn.primary {
+    background:
+      url("button-texture.png") center / cover no-repeat,
+      linear-gradient(#8a8a8a, #767676 48%, #626262 50%, #6d6d6d);
+  }
+
+  .icon-row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .icon-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    border: 2px solid #131313;
+    color: #fff;
+    text-decoration: none;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.25),
+      inset 0 -2px 0 rgba(0,0,0,.35),
+      2px 2px 0 #111;
+  }
+
+  .icon-btn:hover { filter: brightness(1.15); }
+
+  .status-bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 14px;
+    font-size: 12px;
+    color: #ddd;
+    text-shadow: 1px 1px 0 #000;
+    background: rgba(0,0,0,.3);
+  }
+
+  .status-bar .online::before {
+    content: "●";
+    color: #6fd36f;
+    margin-right: 5px;
+  }
+
+  .status-bar .offline::before {
+    content: "●";
+    color: #d36f6f;
+    margin-right: 5px;
+  }
+
+  /* ---- 彈出面板（規則 / 加入伺服器）---- */
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,.6);
+    padding: 20px;
+    z-index: 10;
+  }
+
+  .overlay.open { display: flex; }
+
+  .mc-panel {
+    width: min(480px, 100%);
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 22px;
+    background: linear-gradient(rgba(55,55,55,.97), rgba(39,39,39,.97));
+    border: 3px solid #111;
+    box-shadow:
+      inset 2px 2px rgba(255,255,255,.13),
+      inset -2px -2px rgba(0,0,0,.4),
+      4px 4px #090909;
+  }
+
+  .mc-panel h2 {
+    margin: 0 0 18px;
+    text-align: center;
+    font-size: 26px;
+    text-shadow: 2px 2px 0 #111;
+  }
+
+  .mc-panel .close-btn {
+    display: block;
+    margin: 18px auto 0;
+    width: 140px;
+  }
+
+  .ip-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .ip-line span {
+    font-size: 22px;
+    background: #333;
+    border: 2px solid #111;
+    padding: 8px 14px;
+  }
+
+  .rule {
+    display: flex;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid #444;
+    font-size: 14px;
+  }
+  .rule:last-child { border-bottom: none; }
+  .rule-num { color: #999; min-width: 22px; }
+
+  @media (max-width: 480px) {
+    .splash { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="menu-screen">
+  <div class="title-wrap">
+    <div class="title">6B7T</div>
+    <div class="subtitle">JAVA EDITION</div>
+    <div class="splash">不加入是給</div>
+  </div>
+
+  <nav class="menu-buttons">
+    <button class="mc-btn primary" onclick="openPanel('joinPanel')">加入 6b7t</button>
+    <button class="mc-btn" onclick="openPanel('rulesPanel')">伺服器規則</button>
+    <a class="mc-btn" href="http://abula.tw:8080/" target="_blank" rel="noreferrer">地圖</a>
+    <a class="mc-btn" href="https://discord.gg/Un9MZVf49f" target="_blank" rel="noreferrer">Discord</a>
+  </nav>
+
+
+  <div class="status-bar">
+    <span class="online" id="statusText">abula.tw · 查詢中…</span>
+    <span>6b7t官方．幫我二次轉發</span>
+  </div>
+</div>
+
+<div class="overlay" id="joinPanel">
+  <div class="mc-panel">
+    <h2>加入伺服器</h2>
+    <div class="ip-line">
+      <span id="serverIp">abula.tw</span>
+      <button class="mc-btn" onclick="copyIp()">複製 IP</button>
+    </div>
+    <button class="mc-btn close-btn" onclick="closePanel('joinPanel')">關閉</button>
+  </div>
+</div>
+
+<div class="overlay" id="rulesPanel">
+  <div class="mc-panel">
+    <h2>伺服器規則</h2>
+    <div class="rule"><span class="rule-num">01</span><span>本伺服器與 2b2t 性質不同，並非無政府伺服器。</span></div>
+    <div class="rule"><span class="rule-num">02</span><span>允許使用遊戲漏洞，但禁止利用漏洞繞過領地保護。</span></div>
+    <div class="rule"><span class="rule-num">03</span><span>禁止將未開墾或非自己建造的土地（設施）設為私有領地。</span></div>
+    <div class="rule"><span class="rule-num">04</span><span>禁止外掛:飛行、ESP(人物、箱子透視)、自瞄、Kill Aura(範圍擊殺)允許靈魂出竅(Freecam)</span></div>
+    <div class="rule"><span class="rule-num">05</span><span>禁止故意建造、啟動會造成伺服器嚴重卡頓的機器。</span></div>
+    <div class="rule"><span class="rule-num">06</span><span>假玩家在線時間超過12小時將視情況手動刪除，但機器人裝備會放在箱子裡，不會遺失。</span></div>
+    <div class="rule"><span class="rule-num"></span><span>違反第1、2、4、5項規範者永ban，違反第3項者將視情況縮小或刪除領地。</span></div>
+    <button class="mc-btn close-btn" onclick="closePanel('rulesPanel')">關閉</button>
+  </div>
+</div>
+
+
+<script>
+  function openPanel(id) {
+    document.getElementById(id).classList.add("open");
+  }
+  function closePanel(id) {
+    document.getElementById(id).classList.remove("open");
+  }
+  function copyIp() {
+    const ip = document.getElementById("serverIp").textContent;
+    navigator.clipboard.writeText(ip).then(() => {
+      const btn = event.target;
+      const original = btn.textContent;
+      btn.textContent = "已複製！";
+      setTimeout(() => (btn.textContent = original), 1500);
+    });
+  }
+
+  // 從 mcsrvstat.us 公開 API 抓真實的伺服器狀態與人數
+  // 文件: https://api.mcsrvstat.us/
+  async function updateServerStatus() {
+    const ip = document.getElementById("serverIp").textContent.trim();
+    const statusEl = document.getElementById("statusText");
+    try {
+      const res = await fetch(`https://api.mcsrvstat.us/3/${ip}`);
+      const data = await res.json();
+
+      if (data.online) {
+        const online = data.players?.online ?? 0;
+        const max = data.players?.max ?? "?";
+        statusEl.textContent = `${ip} · ${online} / ${max} 玩家`;
+        statusEl.classList.add("online");
+        statusEl.classList.remove("offline");
+      } else {
+        statusEl.textContent = `${ip} · 伺服器離線`;
+        statusEl.classList.remove("online");
+        statusEl.classList.add("offline");
+      }
+    } catch (err) {
+      statusEl.textContent = `${ip} · 無法取得狀態`;
+      statusEl.classList.remove("online");
+    }
+  }
+
+  updateServerStatus();
+  // 每 60 秒自動更新一次
+  setInterval(updateServerStatus, 60000);
+</script>
+
+</body>
+</html>
