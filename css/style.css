@@ -163,31 +163,18 @@ body {
 
 
 .title {
-
-  font-size:
-    clamp(
-      56px,
-      13vw,
-      110px
-    );
-
-  font-weight: 700;
-
-  letter-spacing: -3px;
-
-  color: #d8d8d8;
-
-  text-shadow:
-    4px 4px 0 #1a1a1a,
-    7px 7px 0 #000;
-
-  transform:
-    skewY(-1.5deg);
-
-  line-height: .85;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 0;
   user-select: none;
+  transform: none;
+}
 
+.title img {
+  display: block;
+  width: clamp(180px, 35vw, 360px);
+  height: auto;
 }
 
 
@@ -293,6 +280,15 @@ body {
 
   pointer-events: auto;
 
+}
+
+
+.half-char {
+  font-size: 0.7em;
+  display: inline-block;
+  vertical-align: baseline;
+  margin-right: -1px;
+  line-height: 1;
 }
 
 
