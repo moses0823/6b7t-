@@ -1,6 +1,5 @@
-```txt
 User-agent: *
 Allow: /
 
 Sitemap: https://abula.tw/sitemap.xml
-```
+
