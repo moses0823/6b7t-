@@ -206,14 +206,10 @@ body {
 ========================================================= */
 
 .splash {
-
   position: absolute;
-
-  top: 40px;
-
+  top: 100px;
   right: -30px;
-
-  color: #ffe94d;
+  color: #ffe100;
 
   font-size:
     clamp(
@@ -222,8 +218,9 @@ body {
       17px
     );
 
-  transform:
-    rotate(-8deg);
+  font-weight: 700;
+
+  transform: rotate(-8deg);
 
   text-shadow:
     1px 1px 0 #6b5c00;
@@ -233,7 +230,6 @@ body {
     .5s
     ease-in-out
     infinite;
-
 }
 
 
