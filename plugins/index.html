@@ -1,0 +1,384 @@
+<!doctype html>
+
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>6b7t | 插件與教學</title>
+
+<link rel="stylesheet" href="../css/plugins.css">
+
+</head>
+
+<body>
+
+<header class="header">
+    <img src="../images/6b7t.png" class="logo" alt="6b7t">
+
+<h1>插件與教學</h1>
+<p>6b7t 玩家常用插件與指令</p>
+
+</header>
+
+<nav class="nav">
+    <a href="#transport">傳送</a>
+    <a href="#land">領地</a>
+    <a href="#chat">聊天</a>
+    <a href="#map">地圖</a>
+    <a href="#utility">實用工具</a>
+    <a href="#server">伺服器資訊</a>
+</nav>
+
+<main class="container">
+
+<!-- 傳送 -->
+
+<section class="category" id="transport">
+    <div class="category-title">
+        <h2>互動</h2>
+        <span>移動與玩家互動</span>
+    </div>
+
+    <div class="plugin-grid">
+
+        <article class="plugin">
+            <h3>TPA</h3>
+
+            <div class="plugin-description">
+                用來向其他玩家發送傳送請求。
+                不需要雙方站在特定位置。
+            </div>
+
+            <div class="commands">
+                <div class="command">
+                    <code>/tpa 玩家</code>
+                    <span class="command-desc">請求傳送到玩家</span>
+                </div>
+
+                <div class="command">
+                    <code>/tpahere 玩家</code>
+                    <span class="command-desc">請求玩家傳送到你</span>
+                </div>
+
+                <div class="command">
+                    <code>/tpaccept</code>
+                    <span class="command-desc">接受傳送請求</span>
+                </div>
+
+                <div class="command">
+                    <code>/tpdeny</code>
+                    <span class="command-desc">拒絕傳送請求</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="plugin">
+            <h3>PvPInvite</h3>
+
+            <div class="plugin-description">
+                用來與其他玩家發起 PvP 對戰。
+                雙方接受邀請後才能互相造成傷害。
+            </div>
+
+            <div class="commands">
+                <div class="command">
+                    <code>/pvp 玩家</code>
+                    <span class="command-desc">向玩家發起 PvP 邀請</span>
+                </div>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+
+<!-- 領地 -->
+
+<section class="category" id="land">
+    <div class="category-title">
+        <h2>領地</h2>
+        <span>保護你的建築</span>
+    </div>
+
+    <div class="plugin-grid">
+
+        <article class="plugin">
+            <h3>Dominion</h3>
+
+            <div class="plugin-description">
+                6b7t 使用的領地保護系統。
+                可以建立領地並管理其他玩家的權限。
+            </div>
+
+            <div class="commands">
+                <div class="command">
+                    <code>/dom</code>
+                    <span class="command-desc">進入Dominion箱子界面</span>
+                </div>
+
+                <div class="command">
+                    <code>/dom create</code>
+                    <span class="command-desc">建立領地(需使用木棍使用左右鍵分別選擇領兩個角落)</span>
+                </div>
+
+                <div class="command">
+                    <code>/dom info</code>
+                    <span class="command-desc">查看領地資訊</span>
+                </div>
+            </div>
+        </article>
+
+    </div>
+
+    <div class="tip">
+        <strong>領地提醒：</strong>
+        請不要將未開墾或非自己建造的土地、設施設為私人領地。
+        詳細規則請查看伺服器規則。
+    </div>
+</section>
+
+
+<!-- 聊天 -->
+
+<section class="category" id="chat">
+    <div class="category-title">
+        <h2>聊天</h2>
+        <span>遊戲內與 Discord</span>
+    </div>
+
+    <div class="plugin-grid">
+
+        <article class="plugin">
+            <h3>DiscordSRV</h3>
+
+            <div class="plugin-description">
+                讓 Minecraft 與 Discord 聊天互通。
+                可以在 Discord 頻道與遊戲內玩家互相聊天。
+            </div>
+
+            <div class="commands">
+                <div class="command">
+                    <code>遊戲聊天</code>
+                    <span class="command-desc">一般聊天會同步至 Discord</span>
+                </div>
+
+                <div class="command">
+                    <code>Discord</code>
+                    <span class="command-desc">Discord 訊息同步至遊戲</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="plugin">
+            <h3>NoChatReports</h3>
+
+            <div class="plugin-description">
+                降低 Minecraft 聊天舉報系統對玩家聊天的影響。
+                玩家通常不需要進行額外操作。
+            </div>
+        </article>
+
+        <article class="plugin">
+            <h3>CloudnodeMSG</h3>
+
+            <div class="plugin-description">
+                提供伺服器訊息與玩家聊天相關功能。
+                玩家一般不需要額外設定。
+            </div>
+        </article>
+
+    </div>
+</section>
+
+
+<!-- 地圖 -->
+
+<section class="category" id="map">
+    <div class="category-title">
+        <h2>地圖</h2>
+        <span>查看 6b7t 世界</span>
+    </div>
+
+    <div class="plugin-grid">
+
+        <article class="plugin">
+            <h3>BlueMap</h3>
+
+            <div class="plugin-description">
+                6b7t 的網頁地圖，可以從瀏覽器查看伺服器世界。
+                不需要進入 Minecraft。
+            </div>
+
+            <div class="commands">
+                <div class="command">
+                    <a
+                        href="http://abula.tw:8080/"
+                        target="_blank"
+                        style="color:#fff;"
+                    >
+                        開啟 6b7t 地圖 →
+                    </a>
+                </div>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+
+<!-- 實用工具 -->
+
+<section class="category" id="utility">
+    <div class="category-title">
+        <h2>實用工具</h2>
+        <span>生存常用功能</span>
+    </div>
+
+    <div class="plugin-grid">
+
+        <article class="plugin">
+            <h3>Veinminer</h3>
+
+            <div class="plugin-description">
+                一次挖掘連在一起的相同礦物或方塊，
+                可以大幅減少挖礦時的重複操作。
+            </div>
+
+            <div class="commands">
+                <div class="command">
+                    <code>/veinminer toggle</code>
+                    <span class="command-desc">開關本功能</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="plugin">
+            <h3>FakeflayerPlugin</h3>
+
+            <div class="plugin-description">
+                伺服器內部使用的假玩家相關功能。
+                一般玩家不需要操作。
+            </div>
+        </article>
+
+        <article class="plugin">
+            <h3>OpenInv</h3>
+
+            <div class="plugin-description">
+                玩家不需要使用。
+                此插件主要提供管理用途，例如查看容器。
+            </div>
+        </article>
+
+        <article class="plugin">
+            <h3>WelcomeText</h3>
+
+            <div class="plugin-description">
+                玩家加入伺服器時顯示歡迎訊息。
+                不需要玩家操作。
+            </div>
+        </article>
+
+    </div>
+</section>
+
+
+<!-- 伺服器資訊 -->
+
+<section class="category" id="server">
+    <div class="category-title">
+        <h2>伺服器資訊</h2>
+        <span>狀態與版本</span>
+    </div>
+
+    <div class="plugin-grid">
+
+        <article class="plugin">
+            <h3>TabTPS</h3>
+
+            <div class="plugin-description">
+                在玩家列表中顯示伺服器狀態資訊，
+                例如 TPS、MSPT 等。
+            </div>
+        </article>
+
+        <article class="plugin">
+            <h3>ViaVersion</h3>
+
+            <div class="plugin-description">
+                提供不同 Minecraft 版本之間的相容性。
+                玩家可以使用伺服器支援範圍內的不同版本加入。
+            </div>
+        </article>
+
+        <article class="plugin">
+            <h3>ViaBackwards</h3>
+
+            <div class="plugin-description">
+                搭配 ViaVersion 使用，
+                讓較舊版本的 Minecraft 玩家可以連線到較新的伺服器。
+            </div>
+        </article>
+
+        <article class="plugin">
+            <h3>Simple Voice Chat</h3>
+
+            <div class="plugin-description">
+                提供 Minecraft 內的語音聊天功能。
+                需要使用支援 Simple Voice Chat 的客戶端。
+            </div>
+        </article>
+
+    </div>
+</section>
+
+
+<!-- 其他 -->
+
+<section class="category">
+    <div class="category-title">
+        <h2>其他插件</h2>
+        <span>玩家通常不需要操作</span>
+    </div>
+
+    <div class="plugin-grid">
+
+        <article class="plugin">
+            <h3>CoreProtect</h3>
+
+            <div class="plugin-description">
+                用於伺服器區塊與玩家操作紀錄。
+                主要提供管理員進行查詢與事故處理。
+            </div>
+        </article>
+
+        <article class="plugin">
+            <h3>LuckPerms</h3>
+
+            <div class="plugin-description">
+                伺服器權限管理系統。
+                玩家通常不需要直接操作。
+            </div>
+        </article>
+
+
+    </div>
+</section>
+
+
+<div class="tip">
+    <strong>注意：</strong>
+    插件功能與指令可能會隨伺服器更新而調整。
+    如果某個指令無法使用，請以遊戲內輸出的指令提示為準。
+</div>
+
+
+<div class="back">
+    <a href="../">← 回到 6b7t 首頁</a>
+</div>
+
+</main>
+
+</body>
+</html>
